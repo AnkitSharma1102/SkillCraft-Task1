@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ankit Sharma - Web Developer Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #001f3f;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #001f3f;
+      color: white;
+      padding: 1rem 2rem;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00bcd4;
+    }
+
+    section {
+      padding: 6rem 2rem 4rem;
+      max-width: 1200px;
+      margin: auto;
+      transition: all 0.6s ease-out;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #001f3f;
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 8rem;
+      text-align: center;
+    }
+
+    .profile-image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 2rem;
+      border: 4px solid #001f3f;
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #001f3f;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      color: #003366;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #333;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      color: white;
+      background-color: #001f3f;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #003366;
+    }
+
+    .cta-button.secondary {
+      background-color: #00bcd4;
+      color: #001f3f;
+    }
+
+    .cta-button.secondary:hover {
+      background-color: #008c9e;
+      color: white;
+    }
+
+    /* About */
+    .about-text {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .about-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: #f0f4f8;
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      flex: 1 1 200px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #001f3f;
+    }
+
+    .stat-label {
+      color: #555;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: #f7f9fc;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .skill-category h3 {
+      margin-bottom: 1rem;
+      color: #001f3f;
+    }
+
+    .skill-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .skill-list li {
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    /* Education */
+    .education-item {
+      margin-bottom: 2rem;
+      border-left: 4px solid #001f3f;
+      padding-left: 1rem;
+    }
+
+    .education-item h3 {
+      color: #001f3f;
+      margin-bottom: 0.3rem;
+    }
+
+    .degree {
+      font-weight: bold;
+      color: #003366;
+    }
+
+    .duration, .grade {
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    /* Certifications */
+    .certifications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .cert-card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 1.5rem;
+      background-color: #f8f9fa;
+    }
+
+    .cert-card h3 {
+      color: #001f3f;
+      margin-bottom: 0.5rem;
+    }
+
+    .provider {
+      font-weight: bold;
+      color: #003366;
+      margin-bottom: 0.5rem;
+    }
+
+    .date {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* Contact */
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-item {
+      flex: 1 1 200px;
+      text-align: center;
+    }
+
+    .contact-item h3 {
+      color: #001f3f;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-item a {
+      text-decoration: none;
+      color: #00bcd4;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">Ankit Sharma</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="profile-image">
+      <img src="ankit.jpg" alt="Ankit Sharma">
+    </div>
+    <h1>Ankit Sharma</h1>
+    <div class="subtitle">Web Developer & BCA Student</div>
+    <p>Passionate about creating innovative web solutions with modern technologies. Currently pursuing BCA at Poornima University with expertise in HTML, CSS, JavaScript, Python, and C Programming.</p>
+    <div class="cta-buttons">
+      <a href="#contact" class="cta-button">Get In Touch</a>
+      <a href="#about" class="cta-button secondary">Learn More</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-text">
+      <p>I’m a BCA student with a passion for web development. I enjoy crafting user-friendly websites and learning new technologies in the process.</p>
+      <p>I am currently working on healthcare website projects and constantly expanding my skills in frontend and backend development.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card"><div class="stat-number">8.61</div><div class="stat-label">Current SGPA</div></div>
+      <div class="stat-card"><div class="stat-number">91%</div><div class="stat-label">10th Grade</div></div>
+      <div class="stat-card"><div class="stat-number">88%</div><div class="stat-label">12th Grade</div></div>
+      <div class="stat-card"><div class="stat-number">2027</div><div class="stat-label">Expected Graduation</div></div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills & Technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Technical Skills</h3>
+        <ul class="skill-list">
+          <li>HTML</li><li>CSS</li><li>JavaScript</li><li>C Programming</li><li>Python</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>Soft Skills</h3>
+        <ul class="skill-list">
+          <li>Team Management</li><li>Leadership Skills</li><li>Problem Solving</li><li>Communication</li><li>Project Management</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>Specialization</h3>
+        <ul class="skill-list">
+          <li>Web Development</li><li>Frontend Design</li><li>Responsive Design</li><li>User Experience</li><li>Healthcare Solutions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+    <div class="education-item">
+      <h3>Poornima University</h3>
+      <div class="degree">Bachelor of Computer Applications (BCA)</div>
+      <div class="duration">2024 - 2027</div>
+      <div class="grade">1st Semester SGPA: 8.61</div>
+    </div>
+    <div class="education-item">
+      <h3>R.C. Dukya International School</h3>
+      <div class="degree">Higher Secondary Education (12th)</div>
+      <div class="duration">Completed</div>
+      <div class="grade">Score: 88%</div>
+    </div>
+    <div class="education-item">
+      <h3>R.C. Dukya International School</h3>
+      <div class="degree">Secondary Education (10th)</div>
+      <div class="duration">Completed</div>
+      <div class="grade">Score: 91%</div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <h2 class="section-title">Certifications & Achievements</h2>
+    <div class="certifications-grid">
+      <div class="cert-card">
+        <h3>Web Development Fundamentals</h3>
+        <div class="provider">Poornima University & Google Developer Groups</div>
+        <div class="date">December 2024</div>
+      </div>
+      <div class="cert-card">
+        <h3>Python Quick Start</h3>
+        <div class="provider">LinkedIn Learning</div>
+        <div class="date">April 2025</div>
+      </div>
+      <div class="cert-card">
+        <h3>Soft Skills & Personality</h3>
+        <div class="provider">NPTEL - IIT Kanpur</div>
+        <div class="date">February 2025</div>
+      </div>
+      <div class="cert-card">
+        <h3>Prayogam 2025 Participant</h3>
+        <div class="provider">1st Position in Web Domain</div>
+        <div class="date">2025</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <h3>Phone</h3>
+        <a href="tel:+918209230180">+91 8209230180</a>
+      </div>
+      <div class="contact-item">
+        <h3>Email</h3>
+        <a href="mailto:sharmaankit76137@gmail.com">sharmaankit76137@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <h3>LinkedIn</h3>
+        <a href="https://www.linkedin.com/in/ankit-sharma-52b0b2324/" target="_blank">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          entry.target.style.transition = 'all 0.6s ease-out';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      observer.observe(section);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
